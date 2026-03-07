@@ -47,20 +47,6 @@ A research-grade and production-ready framework for financial volatility forecas
 | **Attention Mechanism** | Dynamic weighting of each day in the lookback window  | `attention_units = 64`                                  |
 | **Output Heads**        | Dual-head for Volatility (MSE) and VaR (Pinball Loss) | `volatility_activation = linear`, `var_quantile = 0.01` |
 
-### Production Stack
-
-```mermaid
-graph TD
-    A["Data Source (Yahoo Finance / Real-time Feed)"] --> B(Data Generator)
-    B --> C(Training Service)
-    C --> D(MLflow Tracking Server)
-    D --> E(MLflow Model Registry)
-    E --> F(FastAPI Inference Engine)
-    F --> G(Redis Cache)
-    F --> H(Prometheus Metrics)
-    H --> I(Grafana Dashboard)
-```
-
 ---
 
 ## Quick Start
@@ -139,9 +125,9 @@ The model uses a 15-dimensional feature vector across four categories.
 
 | Test                        | Statistic | P-Value | Result                        |
 | :-------------------------- | :-------- | :------ | :---------------------------- |
-| VaR Violation Rate          | **1.05%** | -       | Target 1.00% — acceptable     |
-| Kupiec POF Test             | 0.12      | 0.72    | Pass — correct coverage       |
-| Christoffersen Independence | 0.88      | 0.45    | Pass — independent violations |
+| VaR Violation Rate          | **1.05%** | -       | Target 1.00% acceptable       |
+| Kupiec POF Test             | 0.12      | 0.72    | Pass - correct coverage       |
+| Christoffersen Independence | 0.88      | 0.45    | Pass - independent violations |
 
 ### Trading Strategy Validation
 
