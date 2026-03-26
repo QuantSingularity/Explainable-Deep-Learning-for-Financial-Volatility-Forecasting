@@ -1,4 +1,4 @@
-f"""
+"""
 Multi-Horizon Volatility Forecasting
 Extends the base model to predict 1-day, 5-day, and 22-day ahead volatility.
 """
