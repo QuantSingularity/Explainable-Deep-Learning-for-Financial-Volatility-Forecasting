@@ -239,7 +239,6 @@ class BacktestEngine:
         trades = []
         costs = []
 
-        # Simulate trading
         for i in range(1, len(returns)):
             # Current signal
             signal = signals[i]
@@ -267,6 +266,7 @@ class BacktestEngine:
                         "cost": trade_cost,
                         "position_before": position,
                         "position_after": target_position,
+                        "return_index": i,
                     }
                 )
 
@@ -283,7 +283,7 @@ class BacktestEngine:
         portfolio_returns = np.diff(portfolio_values) / portfolio_values[:-1]
 
         metrics = self._calculate_performance_metrics(
-            portfolio_returns, portfolio_values, trades, costs
+            portfolio_returns, portfolio_values, trades, costs, returns
         )
 
         return {
@@ -301,6 +301,7 @@ class BacktestEngine:
         portfolio_values: List[float],
         trades: List[Dict],
         costs: List[float],
+        asset_returns: np.ndarray,
     ) -> Dict:
         """Calculate comprehensive performance metrics"""
 
@@ -342,9 +343,8 @@ class BacktestEngine:
         # Calmar ratio
         calmar_ratio = annualized_return / abs(max_drawdown) if max_drawdown != 0 else 0
 
-        # Win rate
         winning_trades = sum(
-            1 for t in trades if t["trade_size"] * returns[trades.index(t)] > 0
+            1 for t in trades if t["trade_size"] * asset_returns[t["return_index"]] > 0
         )
         win_rate = winning_trades / len(trades) if len(trades) > 0 else 0
 

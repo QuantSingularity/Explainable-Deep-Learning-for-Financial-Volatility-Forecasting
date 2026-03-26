@@ -287,8 +287,8 @@ def create_interpretability_report(importance_df, save_path="../paper"):
     report.append("=" * 70)
     report.append("\nTop 5 Most Important Features:\n")
 
-    for idx, row in importance_df.head(5).iterrows():
-        report.append(f"  {idx+1}. {row['Feature']}: {row['Importance']:.4f}")
+    for rank, (_, row) in enumerate(importance_df.head(5).iterrows(), start=1):
+        report.append(f"  {rank}. {row['Feature']}: {row['Importance']:.4f}")
 
     report.append(f"\n\nKey Finding:")
     top_feature = importance_df.iloc[0]["Feature"]

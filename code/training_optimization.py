@@ -4,6 +4,7 @@ Implements mixed precision training, model pruning, and knowledge distillation
 """
 
 import numpy as np
+import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
 import tensorflow_model_optimization as tfmot
@@ -46,7 +47,7 @@ class MixedPrecisionTrainer:
         data_dict: Dict,
         epochs: int = 100,
         batch_size: int = 64,
-    ) -> Tuple[keras.Model, dict]:
+    ) -> Tuple[keras.Model, dict, float]:
         """
         Train model with mixed precision
 

@@ -2,22 +2,22 @@
 Visualize Model Architecture
 """
 
+import os
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 
 def create_architecture_diagram(save_path="../figures/model_architecture.png"):
-    import os
-
-    os.makedirs(os.path.dirname(save_path), exist_ok=True)
     """
     Create a visual diagram of the LSTM-Attention-SHAP architecture.
-    
+
     Parameters:
     -----------
     save_path : str
         Path to save the figure
     """
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
     fig, ax = plt.subplots(figsize=(14, 10))
     ax.set_xlim(0, 10)
     ax.set_ylim(0, 12)

@@ -212,9 +212,17 @@ def build_complete_dataset(
     if price_data.empty:
         raise ValueError(f"No data downloaded for {ticker}")
 
-    # Reset index to have date as column
     df = price_data.reset_index()
-    df.columns = ["date", "open", "high", "low", "close", "adj_close", "volume"]
+
+    # Flatten MultiIndex columns if present (yfinance ≥0.2 with single ticker)
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = [col[0] if col[1] == "" else col[0] for col in df.columns]
+
+    # Standardise column names to lowercase
+    df.columns = [c.lower().replace(" ", "_") for c in df.columns]
+
+    # Rename 'adj_close' variants uniformly; 'date' from reset_index is already lowercase
+    df = df.rename(columns={"adj._close": "adj_close", "date": "date"})
 
     print(f"\nBase data: {len(df)} trading days")
 
@@ -237,7 +245,7 @@ def build_complete_dataset(
     if vix is not None:
         vix_df = pd.DataFrame({"date": vix.index, "vix": vix.values})
         df = df.merge(vix_df, on="date", how="left")
-        df["vix"] = df["vix"].fillna(method="ffill")
+        df["vix"] = df["vix"].ffill()
     else:
         # Use implied volatility proxy
         df["vix"] = df["realized_volatility"] * 100 * 1.2

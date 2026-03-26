@@ -177,8 +177,7 @@ if __name__ == "__main__":
     # Generate synthetic dataset
     df = generate_synthetic_dataset(n_days=1827, start_date="2018-01-01")
 
-    # Save to file
-    save_dataset(df, "/home/user/volatility_project/data/synthetic_data.csv")
+    save_dataset(df, "../data/synthetic_data.csv")
 
     # Print statistics
     print("\n=== Dataset Statistics ===")

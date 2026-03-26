@@ -48,6 +48,13 @@ class AttentionLayer(layers.Layer):
             trainable=True,
         )
 
+        self.b_a = self.add_weight(
+            name="attention_bias",
+            shape=(self.units,),
+            initializer="zeros",
+            trainable=True,
+        )
+
         super(AttentionLayer, self).build(input_shape)
 
     def call(self, inputs):
@@ -66,9 +73,11 @@ class AttentionLayer(layers.Layer):
         attention_weights : tensor
             Attention weights (batch_size, time_steps, 1)
         """
-        # Compute alignment scores
-        # score = v_a^T * tanh(W_a * h_j)
-        score = tf.nn.tanh(tf.tensordot(inputs, self.W_a, axes=1))
+        score = tf.nn.tanh(
+            tf.tensordot(inputs, self.W_a, axes=1)
+            + tf.tensordot(inputs, self.U_a, axes=1)
+            + self.b_a
+        )
         attention_scores = tf.tensordot(score, self.v_a, axes=1)
 
         # Apply softmax to get attention weights

@@ -337,7 +337,9 @@ def christoffersen_test(violations_binary):
     else:
         pi_11 = n11 / (n10 + n11)
 
-    pi = (n01 + n11) / len(violations_binary)
+    # n-1 pairs (transitions), not the full n-length array.
+    n_transitions = len(violations_binary) - 1
+    pi = (n01 + n11) / n_transitions if n_transitions > 0 else 0
 
     # Likelihood ratio
     if pi_01 == 0 or pi_11 == 0 or pi == 0:

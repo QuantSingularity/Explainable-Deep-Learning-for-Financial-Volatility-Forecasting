@@ -210,7 +210,8 @@ class StreamingInferencePipeline:
 
     def _load_model(self) -> tf.keras.Model:
         """Load trained model with custom objects"""
-        from code.model import AttentionLayer
+
+        from model import AttentionLayer
 
         custom_objects = {"AttentionLayer": AttentionLayer}
 
@@ -461,7 +462,7 @@ async def example_streaming_workflow():
 
     # Initialize pipeline
     pipeline = StreamingInferencePipeline(
-        model_path="../models/lstm_attention_model.h5",
+        model_path="../models/lstm_attention_model.keras",
         lookback_window=30,
         n_features=12,
     )

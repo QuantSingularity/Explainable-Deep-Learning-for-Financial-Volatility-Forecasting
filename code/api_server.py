@@ -125,15 +125,14 @@ class HealthResponse(BaseModel):
 START_TIME = time.time()
 
 
-def load_model(model_path: str = "/app/models/lstm_attention_model.h5"):
+def load_model(model_path: str = "/app/models/lstm_attention_model.keras"):
     """Load the trained model"""
     global model, model_loaded
 
     try:
         logger.info(f"Loading model from {model_path}")
 
-        # Custom objects for loading
-        from code.model import AttentionLayer
+        from model import AttentionLayer
 
         custom_objects = {"AttentionLayer": AttentionLayer}
         model = tf.keras.models.load_model(model_path, custom_objects=custom_objects)
@@ -168,7 +167,7 @@ def init_redis():
 @app.on_event("startup")
 async def startup_event():
     """Initialize on startup"""
-    model_path = os.getenv("MODEL_PATH", "/app/models/lstm_attention_model.h5")
+    model_path = os.getenv("MODEL_PATH", "/app/models/lstm_attention_model.keras")
     load_model(model_path)
     init_redis()
 

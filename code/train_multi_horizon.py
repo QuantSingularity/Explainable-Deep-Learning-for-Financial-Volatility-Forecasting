@@ -1,4 +1,4 @@
-"""
+f"""
 Multi-Horizon Volatility Forecasting
 Extends the base model to predict 1-day, 5-day, and 22-day ahead volatility.
 """
@@ -189,12 +189,13 @@ class MultiHorizonVolatilityModel:
                 targets[f"h{horizon}"] = df[target_col].values
             else:
                 # Average volatility over next h days
+                # Replaced with the direct .ffill() method.
                 targets[f"h{horizon}"] = (
                     df[target_col]
                     .rolling(window=horizon, min_periods=1)
                     .mean()
                     .shift(-horizon + 1)
-                    .fillna(method="ffill")
+                    .ffill()
                     .values
                 )
 
@@ -292,9 +293,7 @@ def train_multi_horizon_model(
     ]
 
     if use_mlflow:
-        callbacks.append(
-            mlflow.keras.MlflowCallback(model, save_model_every_n_epochs=10)
-        )
+        callbacks.append(mlflow.keras.MlflowCallback())
 
     # Train model
     print("\nStarting training...")
@@ -312,10 +311,10 @@ def train_multi_horizon_model(
 
     print("\nTraining completed!")
 
-    # Save model
+    # Save model using native .keras format (not deprecated .h5)
     os.makedirs(save_path, exist_ok=True)
     model_path = os.path.join(
-        save_path, f'multi_horizon_model_{"_".join(map(str, horizons))}.h5'
+        save_path, f'multi_horizon_model_{"_".join(map(str, horizons))}.keras'
     )
     model.save(model_path)
     print(f"\nModel saved to: {model_path}")

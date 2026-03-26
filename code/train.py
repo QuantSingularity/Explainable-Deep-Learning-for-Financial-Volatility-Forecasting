@@ -83,9 +83,8 @@ def train_model(data_dict, epochs=100, batch_size=64, save_path="../models"):
 
     print("\nTraining completed!")
 
-    # Save model
     os.makedirs(save_path, exist_ok=True)
-    model_path = os.path.join(save_path, "lstm_attention_model.h5")
+    model_path = os.path.join(save_path, "lstm_attention_model.keras")
     model.save(model_path)
     print(f"\nModel saved to: {model_path}")
 
