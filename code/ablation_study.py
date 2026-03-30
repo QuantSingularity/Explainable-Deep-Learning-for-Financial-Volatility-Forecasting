@@ -262,7 +262,7 @@ class AblationStudy:
             "history": history.history,
         }
 
-        print(f"\nResults:")
+        print("\nResults:")
         print(f"  RMSE: {rmse:.6f}")
         print(f"  MAE:  {mae:.6f}")
         print(f"  R²:   {r2:.6f}")

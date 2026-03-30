@@ -193,7 +193,7 @@ def plot_shap_bar(importance_df, save_path="../figures", top_n=12):
     fig, ax = plt.subplots(figsize=(10, 7))
 
     colors = plt.cm.RdYlBu_r(np.linspace(0.3, 0.7, len(top_features)))
-    bars = ax.barh(range(len(top_features)), top_features["Importance"], color=colors)
+    ax.barh(range(len(top_features)), top_features["Importance"], color=colors)
 
     ax.set_yticks(range(len(top_features)))
     ax.set_yticklabels(top_features["Feature"], fontsize=11)
@@ -290,14 +290,14 @@ def create_interpretability_report(importance_df, save_path="../paper"):
     for rank, (_, row) in enumerate(importance_df.head(5).iterrows(), start=1):
         report.append(f"  {rank}. {row['Feature']}: {row['Importance']:.4f}")
 
-    report.append(f"\n\nKey Finding:")
+    report.append("\n\nKey Finding:")
     top_feature = importance_df.iloc[0]["Feature"]
     top_importance = importance_df.iloc[0]["Importance"]
     report.append(
         f"  {top_feature} is the dominant driver with mean |SHAP| = {top_importance:.4f}"
     )
     report.append(
-        f"  This confirms the critical role of geopolitical factors in volatility forecasting."
+        "  This confirms the critical role of geopolitical factors in volatility forecasting."
     )
 
     report_text = "\n".join(report)

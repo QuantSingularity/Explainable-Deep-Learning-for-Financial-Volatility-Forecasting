@@ -169,7 +169,7 @@ def train_val_test_split(
         X_test_scaled, y_test_scaled.flatten(), lookback
     )
 
-    print(f"\nSequence shapes:")
+    print("\nSequence shapes:")
     print(f"X_train: {X_train_seq.shape}, y_train: {y_train_seq.shape}")
     print(f"X_val: {X_val_seq.shape}, y_val: {y_val_seq.shape}")
     print(f"X_test: {X_test_seq.shape}, y_test: {y_test_seq.shape}")

@@ -137,7 +137,7 @@ def main():
     print(
         f"✓ VaR backtesting completed (Violation rate: {var_results['violation_rate']*100:.2f}%)"
     )
-    print(f"✓ SHAP analysis completed")
+    print("✓ SHAP analysis completed")
     print(f"✓ Top driver: {explain_results['importance_df'].iloc[0]['Feature']}")
 
     print("\n" + "=" * 70)

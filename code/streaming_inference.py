@@ -206,7 +206,7 @@ class StreamingInferencePipeline:
 
         logger.info("StreamingInferencePipeline initialized")
         logger.info(f"Model loaded from: {model_path}")
-        logger.info(f"Target latency: <100ms")
+        logger.info("Target latency: <100ms")
 
     def _load_model(self) -> tf.keras.Model:
         """Load trained model with custom objects"""

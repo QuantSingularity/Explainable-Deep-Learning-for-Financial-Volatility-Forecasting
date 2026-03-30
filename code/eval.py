@@ -64,7 +64,7 @@ def evaluate_volatility_forecast(model, data_dict, scaler):
 
     results = {"RMSE": rmse, "MAE": mae, "QLIKE": qlike, "R2": r2}
 
-    print(f"\nTest Set Performance:")
+    print("\nTest Set Performance:")
     print(f"  RMSE: {rmse:.4f} ({rmse*100:.2f}e-2)")
     print(f"  MAE:  {mae:.4f} ({mae*100:.2f}e-2)")
     print(f"  QLIKE: {qlike:.4f}")
@@ -114,21 +114,21 @@ def evaluate_var_backtest(predictions_dict, alpha=0.01):
     n_violations = np.sum(violations)
     violation_rate = n_violations / len(simulated_returns)
 
-    print(f"\n99% VaR Backtesting Results:")
+    print("\n99% VaR Backtesting Results:")
     print(f"  Target violation rate: {alpha*100:.2f}%")
     print(f"  Actual violation rate: {violation_rate*100:.2f}%")
     print(f"  Number of violations: {n_violations}/{len(simulated_returns)}")
 
     # Kupiec test (Unconditional Coverage)
     kupiec_lr, kupiec_pval = kupiec_test(n_violations, len(simulated_returns), alpha)
-    print(f"\nKupiec POF Test:")
+    print("\nKupiec POF Test:")
     print(f"  LR statistic: {kupiec_lr:.2f}")
     print(f"  p-value: {kupiec_pval:.4f}")
     print(f"  Result: {'Accept' if kupiec_pval > 0.05 else 'Reject'} (5% significance)")
 
     # Christoffersen test (Independence)
     christoffersen_lr, christoffersen_pval = christoffersen_test(violations)
-    print(f"\nChristoffersen Independence Test:")
+    print("\nChristoffersen Independence Test:")
     print(f"  LR statistic: {christoffersen_lr:.2f}")
     print(f"  p-value: {christoffersen_pval:.4f}")
     print(

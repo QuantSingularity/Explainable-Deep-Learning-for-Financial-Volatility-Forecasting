@@ -422,7 +422,7 @@ def fig4_shap_importance_bar(importance_df=None, save_path="../figures"):
     colors = plt.cm.RdYlBu_r(np.linspace(0.2, 0.8, len(importance_df)))
 
     # Horizontal bar plot
-    bars = ax.barh(
+    ax.barh(
         range(len(importance_df)),
         importance_df["Importance"],
         color=colors,
@@ -712,7 +712,7 @@ def fig8_model_comparison(comparison_df=None, save_path="../figures"):
     ax.text(
         0.5,
         0.95,
-        f"30% improvement over GARCH baseline",
+        "30% improvement over GARCH baseline",
         transform=ax.transAxes,
         fontsize=11,
         style="italic",
@@ -742,7 +742,7 @@ def generate_all_figures(save_path="../figures"):
     print(f"\n{'='*70}")
     print("✓ ALL FIGURES GENERATED SUCCESSFULLY")
     print(f"{'='*70}")
-    print(f"Total figures: 8")
+    print("Total figures: 8")
     print(f"Location: {save_path}")
 
 

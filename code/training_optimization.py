@@ -86,7 +86,7 @@ class MixedPrecisionTrainer:
             ),
         ]
 
-        print(f"\nStarting mixed precision training...")
+        print("\nStarting mixed precision training...")
         print(f"Training samples: {len(X_train)}")
         print(f"Validation samples: {len(X_val)}")
 
@@ -321,7 +321,7 @@ class KnowledgeDistiller:
             dropout=0.2,
         )
 
-        print(f"\nStudent model created:")
+        print("\nStudent model created:")
         print(f"  LSTM units: {lstm_units}")
         print(f"  Attention units: {attention_units}")
         print(f"  Dense units: {dense_units}")
