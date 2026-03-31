@@ -3,9 +3,10 @@ Baseline Models Implementation
 GARCH, EGARCH, HAR-RV, and other benchmark models for comparison.
 """
 
+import warnings
+
 import numpy as np
 from arch import arch_model
-import warnings
 
 warnings.filterwarnings("ignore")
 

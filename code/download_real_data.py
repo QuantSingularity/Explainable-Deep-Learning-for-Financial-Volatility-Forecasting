@@ -3,10 +3,11 @@ Real Financial Data Downloader
 Downloads actual market data from Yahoo Finance and external sources.
 """
 
-import yfinance as yf
-import pandas as pd
-import numpy as np
 import warnings
+
+import numpy as np
+import pandas as pd
+import yfinance as yf
 
 warnings.filterwarnings("ignore")
 

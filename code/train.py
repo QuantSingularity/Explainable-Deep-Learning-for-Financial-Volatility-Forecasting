@@ -2,12 +2,13 @@
 Training Script for LSTM-Attention Model
 """
 
+import os
+import pickle
+
 import numpy as np
 import tensorflow as tf
 from model import build_lstm_attention_model, compile_model, create_callbacks
-from utils import train_val_test_split, load_and_prepare_data
-import os
-import pickle
+from utils import load_and_prepare_data, train_val_test_split
 
 # Set seeds for reproducibility
 np.random.seed(123)

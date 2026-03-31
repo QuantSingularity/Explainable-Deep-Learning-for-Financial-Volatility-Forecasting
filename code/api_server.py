@@ -3,22 +3,22 @@ FastAPI Inference Server for Real-Time Volatility Forecasting
 Provides REST API for model serving with <100ms latency target
 """
 
+import asyncio
+import json
+import logging
 import os
 import time
-import asyncio
-from typing import List, Dict, Optional
 from datetime import datetime
-import logging
+from typing import Dict, List, Optional
 
 import numpy as np
+import redis
 import tensorflow as tf
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
-import redis
-import json
-from prometheus_client import Counter, Histogram, Gauge, generate_latest
 from fastapi.responses import Response
+from prometheus_client import Counter, Gauge, Histogram, generate_latest
+from pydantic import BaseModel, Field
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

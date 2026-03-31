@@ -2,9 +2,10 @@
 Main Pipeline: Complete Workflow for Model Training, Evaluation, and Explanation
 """
 
+import os
+
 import numpy as np
 import tensorflow as tf
-import os
 
 # Set seeds
 np.random.seed(123)
@@ -12,17 +13,17 @@ tf.random.set_seed(456)
 
 # Import custom modules
 from data_generator import generate_synthetic_dataset
-from utils import load_and_prepare_data, train_val_test_split
-from model import get_attention_weights
-from train import train_model, plot_training_history
 from eval import (
-    evaluate_volatility_forecast,
-    evaluate_var_backtest,
     compare_with_baselines,
-    plot_var_backtest,
+    evaluate_var_backtest,
+    evaluate_volatility_forecast,
     generate_results_table,
+    plot_var_backtest,
 )
 from explain import run_full_explainability_pipeline
+from model import get_attention_weights
+from train import plot_training_history, train_model
+from utils import load_and_prepare_data, train_val_test_split
 
 
 def main():

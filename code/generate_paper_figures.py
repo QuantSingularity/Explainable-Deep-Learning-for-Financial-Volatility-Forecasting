@@ -3,12 +3,13 @@ Complete Figure Generation for Research Paper
 Generates all figures described in the paper with professional quality.
 """
 
-import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch
-import numpy as np
-import seaborn as sns
-import pandas as pd
 import os
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from matplotlib.patches import FancyBboxPatch
 
 # Set professional style
 plt.style.use("seaborn-v0_8-whitegrid")

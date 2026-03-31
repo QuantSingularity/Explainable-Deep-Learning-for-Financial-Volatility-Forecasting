@@ -3,12 +3,13 @@ Trading Strategy Backtester with Volatility-Based Strategies
 Implements realistic trading with transaction costs, slippage, and position limits
 """
 
+import os
+from dataclasses import dataclass
+from typing import Dict, List
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from typing import Dict, List
-from dataclasses import dataclass
-import matplotlib.pyplot as plt
-import os
 
 
 @dataclass

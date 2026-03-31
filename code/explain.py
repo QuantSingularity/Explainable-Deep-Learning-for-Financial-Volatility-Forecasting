@@ -2,12 +2,13 @@
 SHAP Explainability Module for LSTM-Attention Model
 """
 
+import os
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 import shap
-import os
 from sklearn.cluster import KMeans
 
 # Set random seed

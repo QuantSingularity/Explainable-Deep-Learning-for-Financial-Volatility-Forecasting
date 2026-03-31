@@ -2,10 +2,10 @@
 LSTM-Attention Model Architecture for Volatility Forecasting
 """
 
+import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.keras import layers, Model
-import numpy as np
+from tensorflow.keras import Model, layers
 
 # Set random seeds for reproducibility
 tf.random.set_seed(456)

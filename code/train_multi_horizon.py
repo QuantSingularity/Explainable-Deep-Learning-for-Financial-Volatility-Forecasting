@@ -3,18 +3,18 @@ Multi-Horizon Volatility Forecasting
 Extends the base model to predict 1-day, 5-day, and 22-day ahead volatility.
 """
 
-import numpy as np
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers, Model
-import pandas as pd
 import os
 from typing import Dict, List, Tuple
+
 import mlflow
 import mlflow.keras
-
+import numpy as np
+import pandas as pd
+import tensorflow as tf
 from model import AttentionLayer, pinball_loss
-from utils import train_val_test_split, load_and_prepare_data
+from tensorflow import keras
+from tensorflow.keras import Model, layers
+from utils import load_and_prepare_data, train_val_test_split
 
 # Set seeds
 np.random.seed(123)
@@ -355,7 +355,7 @@ def evaluate_multi_horizon_performance(
     results_df : pd.DataFrame
         Performance metrics for each horizon
     """
-    from utils import calculate_rmse, calculate_mae, calculate_r2
+    from utils import calculate_mae, calculate_r2, calculate_rmse
 
     X_test = data_dict["test"]["X"]
     y_test = data_dict["test"]["y"]

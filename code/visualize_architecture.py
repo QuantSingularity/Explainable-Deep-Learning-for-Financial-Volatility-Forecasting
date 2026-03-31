@@ -3,8 +3,9 @@ Visualize Model Architecture
 """
 
 import os
+
 import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
+from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
 
 def create_architecture_diagram(save_path="../figures/model_architecture.png"):

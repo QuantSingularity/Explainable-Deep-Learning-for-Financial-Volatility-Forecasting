@@ -3,16 +3,16 @@ Training Optimization Module
 Implements mixed precision training, model pruning, and knowledge distillation
 """
 
+import os
+import time
+from typing import Dict, Tuple
+
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-from tensorflow import keras
 import tensorflow_model_optimization as tfmot
-from typing import Dict, Tuple
-import time
-import os
-
 from model import build_lstm_attention_model, compile_model
+from tensorflow import keras
 
 # Set seeds
 np.random.seed(123)

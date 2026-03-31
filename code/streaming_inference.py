@@ -4,14 +4,15 @@ Processes real-time market data with <100ms latency target
 """
 
 import asyncio
-import numpy as np
-import tensorflow as tf
-from typing import Dict, List, Optional, Callable
-from datetime import datetime
-from collections import deque
 import logging
 import time
+from collections import deque
 from dataclasses import dataclass
+from datetime import datetime
+from typing import Callable, Dict, List, Optional
+
+import numpy as np
+import tensorflow as tf
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

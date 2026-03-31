@@ -2,11 +2,12 @@
 Utility Functions for Data Loading, Preprocessing, and Evaluation
 """
 
+import warnings
+
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
 from scipy import stats
-import warnings
+from sklearn.preprocessing import MinMaxScaler
 
 warnings.filterwarnings("ignore")
 
