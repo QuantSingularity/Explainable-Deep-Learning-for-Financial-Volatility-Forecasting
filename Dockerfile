@@ -43,7 +43,7 @@ RUN chmod +x scripts/run_all.sh scripts/setup.sh scripts/lint.sh
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD python -c "import tensorflow as tf; print(tf.__version__)" || exit 1
 
-# Default — run from code/ so all relative paths resolve correctly
+# Default - run from code/ so all relative paths resolve correctly
 CMD ["bash", "-c", "cd /app/code && python main_pipeline.py"]
 
 # --- Development Stage ---
